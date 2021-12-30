@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- viewport: Para que se adapte a la resolucion del celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FUENTES PARA EL TEXTO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- FUETE PARA ICONOS -->
+    <script src="https://kit.fontawesome.com/e0f89e011a.js" crossorigin="anonymous"></script>
+
+    <!-- ESTILOS -->
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Document</title>
+
+
+</head>
+<body class="background-<%= logcolor %>">
+    <h1>Fromulario Login</h1> 
+
+    <section>
+
+        <!-- FORMULARIO DE LA VISTA -->
+        <form action="/" method="POST" class="fromulario">    
+            <div class="granCampo">
+                <!-- Aca, entro si ya estoy logeado -->
+                <% if (logname) { %> 
+                    <input type="text" name="name" id="name" class="campo" value="<%= logname %>"> 
+                <!-- Validacion/error: Aca, entro si se detecto algun error de validación -->
+                <% } else if (errores.find(element => element.param == 'name')) { %>
+                    <input type="text" name="name" id="name" class="campoValidacion" placeholder="<%= errores.find(element => element.param == 'name').msg %>"> 
+                <!-- Aca entro por primera vez, o si el campo esta vacio -->
+                <% } else { %>
+                    <input type="text" name="name" id="name" class="campo" placeholder="Ingrese su nombre:"> 
+                <% } %>
+            </div>
+        
+            <div class="granCampo">
+                <div>
+
+                    <label for="color"> Color: </label>
+
+                    <!-- Validacion/error: Aca, entro si se detecto algun error de validación -->
+                    <% if (errores.find(element => element.param == 'color')) { %>
+                        <select class="campoValidacionSelect" name="color" id="color" title="select">
+                            <option value="" selected><%= errores.find(element => element.param == 'color').msg %></option>
+                        
+                    <!-- Aca entro por primera vez, o si el campo esta vacio -->
+                    <% } else { %>
+                        <select name="color" id="color" title="select">
+                    <% } %>
+                            <option value="">Elige un color:</option>
+                            <option value="negro">negro</option>
+                            <option value="blanco">blanco</option>
+                            <option value="rojo">rojo</option>
+                            <option value="verde">verde</option>
+                            <option value="amarillo">amarillo</option>
+                            <option value="azul">azul</option>
+                            <!-- Aca, entro si ya estoy logeado -->
+                            <% if (logcolor) { %> 
+                                <option value="<%= logcolor %>" selected><%= logcolor %></option>
+                            <% } %>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="granCampo">
+                <!-- Aca, entro si ya estoy logeado -->
+                <% if (logmail) { %> 
+                    <input type="email" name="mail" id="mail" class="campo" value="<%= logmail %>"> 
+                <!-- Validacion/error: Aca, entro si se detecto algun error de validación -->
+                <% } else if (errores.find(element => element.param == 'mail')) { %>
+                    <input type="email" name="mail" id="mail" class="campoValidacion" placeholder="<%= errores.find(element => element.param == 'mail').msg %>"> 
+                <!-- Aca entro por primera vez, o si el campo esta vacio -->
+                <% } else { %>
+                    <input type="email" id="mail" name="mail" class="campo" placeholder="Ingrese su mail:">
+                <% } %>
+            </div>
+        
+            <div class="granCampo">
+                <!-- Aca, entro si ya estoy logeado -->
+                <% if (logedad) { %> 
+                    <input type="text" name="edad" id="edad" class="campo" value="<%= logedad %>"> 
+                <!-- Validacion/error: Aca, entro si se detecto algun error de validación -->
+                <% } else if (errores.find(element => element.param == 'edad')) { %>
+                    <input type="text" name="edad" id="edad" class="campoValidacion" placeholder="<%= errores.find(element => element.param == 'edad').msg %>"> 
+                <!-- Aca entro por primera vez, o si el campo esta vacio -->
+                <% } else { %>
+                    <input type="text" id="edad" name="edad" class="campo" placeholder="Ingrese su edad:">
+                <% } %>
+            </div>
+            
+            <div class="checkOption">
+                <!-- CHEKBOX RECORDAR COLOR -->
+                <% if (resultado?.recordarColor) {%>
+                    <input type="checkbox" id="recordarColor" name="recordarColor" value='on' > 
+                <% } else { %>
+                    <input type="checkbox" id="recordarColor" name="recordarColor"> 
+                <% } %>                
+                <label for="recordarColor">Recordar login</label>            
+
+                <!-- BOTON OLVIDAR COLOR -->
+
+                <!-- <button> 
+                    <a href="/?olvidar=true">Olvidar login </a>
+                </button>
+                 -->
+                <!-- <button type="reset" id="clear" name="clear"> Borrar </button> -->
+
+                <a href="/?olvidar=true">
+                        Olvidar login
+
+                </a>
+            </div>
+
+
+            <!-- BOTON ENVIAR -->
+            <button type="sumbit">Enviar</button>
+            <br>
+
+       
+            <!-- MUESTRO EN LA VISTA LA INFORMACION DE LOS CAMPOS DEL FORMULARIO -->
+            <% if (resultado?.name) { %>
+                <p class="textLog"> 
+                    Hola <strong><%= resultado.name  %> </strong> , 
+                    elegiste el color: <strong><%= resultado.color  %> </strong> , 
+                    tu email es: <strong><%= resultado.mail  %> </strong>
+
+                    <% if (resultado.edad) { %>
+                        y tu edad es: <strong><%= resultado.edad %> </strong>
+                    <% } %>
+                </p>
+
+            <% } %>
+
+            <!-- SELEC RECORDAR: VOY A OTRA VISTA PARA COMPROBAR EL COOKIE SE GUARDO OK -->
+            <% if ((resultado?.name) && (resultado?.recordarColor)) { %>
+            <a href="/detail">
+                Otra Vista
+            </a> 
+            <% } %>
+
+                        
+        </form>
+    </section>
+
+</body>
+</html>

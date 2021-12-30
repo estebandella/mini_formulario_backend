@@ -1,0 +1,126 @@
+
+/*====== Basics ======*/
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(87, 95, 100);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  width: 300px;
+  background-color: rgb(204, 203, 203);
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 5px;
+  margin: 0px;
+}
+
+.validacionFormError {
+  color: red;
+}
+
+.background-negro {
+  background-color: black;
+}
+.background-blanco {
+  background-color: white;
+}
+.background-rojo {
+  background-color: red;
+}
+.background-verde {
+  background-color: greenyellow;
+}
+.background-amarillo {
+  background-color: yellow;
+}
+.background-azul {
+  background-color: blue;
+}
+
+
+.granCampo {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.campo {
+  height: 32px;
+  width: 250px;
+  border-radius: 7px;
+  background-color: rgb(250, 247, 247);
+  border: 2px solid grey;
+}
+
+.granCampo div {
+  width: 250px;
+  display: flex;
+}
+
+select {
+  width: 100%;
+  padding-left: 10px;
+  color:grey;
+  height: 25px;
+  border-radius: 5px;
+  background-color: rgb(228, 225, 225);
+}
+
+.granCampo div label {
+  width: 80px;
+  color:grey;
+}
+
+p {
+  padding-left: 30px;
+}
+
+.checkOption {
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  width: 250px;
+}
+
+button {
+  border-radius: 7px;
+  width: 250px;
+  height: 32px;
+  background-color: blue;
+  color: white
+}
+
+.textLog {
+  width: 250px;
+  display: block;
+  justify-content: flex-start;
+  padding: 0px;
+  color: rgb(94, 94, 94);
+}
+
+/* VALIDACIONES */
+
+.campoValidacion {
+  height: 32px;
+  width: 250px;
+  border-radius: 7px;
+  background-color: rgb(250, 247, 247);
+  border: 3px solid red;
+}
+
+.campoValidacion::placeholder {
+  color: red
+}
+
+.campoValidacionSelect {
+  border: 3px solid red;
+  color: red
+}

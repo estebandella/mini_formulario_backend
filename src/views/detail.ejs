@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Detalle</title>
+</head>
+<body class="background-<%= logcolor %>">
+    <h1>Vista N° 2</h1> 
+
+    <!-- MUESTRO EN LA VISTA LA INFORMACION DE LOS CAMPOS DEL FORMULARIO -->
+    <p class="textLog"> 
+        Hola <strong><%= logname  %> </strong> , 
+        elegiste el color: <strong><%= logcolor  %> </strong> , 
+        tu email es: <strong><%= logmail  %> </strong>
+        <% if (logedad) { %>
+            y tu edad es: <strong><%= logedad %> </strong>
+        <% } %>
+    </p>
+
+    <a href="/">
+        Regresar
+    </a> 
+    
+
+</body>
+</html>
