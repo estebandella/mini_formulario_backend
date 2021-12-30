@@ -1,7 +1,5 @@
 # mini-formulario-express-validator-cookies-middlewares
 
-## Descripción del Proyecto: 
-
 Pequeño formulario de login, con express validator empleando cookies y middlewares 
 
 ## Contacto: 
